@@ -1,10 +1,10 @@
 <?php
 
-Namespace Infrastructure\Persistence;
+Namespace Sp\Infrastructure\Persistence;
 
-use Domain\User\User;
-use Domain\User\UserRepository;
-use Infrastructure\Persistence\Eloquent\UserEloquentModel;
+use Sp\Domain\Model\User\User;
+use Sp\Domain\Model\User\UserRepository;
+use Sp\Infrastructure\Persistence\Eloquent\UserEloquentModel;
 
 class EloquentUserRepository implements UserRepository
 {

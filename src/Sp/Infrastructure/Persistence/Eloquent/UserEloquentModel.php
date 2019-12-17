@@ -1,6 +1,6 @@
 <?php
 
-Namespace Infrastructure\Persistence\Eloquent;
+Namespace Sp\Infrastructure\Persistence\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 

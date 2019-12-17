@@ -37,8 +37,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Domain\\": "src/Domain/",
-            "Infrastructure\\": "src/Infrastructure/"
+            "Sp\\": "src/Sp/"
         },
         "classmap": [
             "database/seeds",
@@ -47,12 +46,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "SpTests\\": "tests/Sp/"
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "test": "vendor/bin/phpunit",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

@@ -6,13 +6,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use Domain\User\User;
-use Domain\User\UserIdValueObject;
+use Sp\Domain\Model\User\User;
+use Sp\Domain\Model\User\UserIdValueObject;
 
 class UserTest extends TestCase
 {
     /**
-     * 
      * @test
      */
     public function user_id_value_object_has_uuid()
@@ -22,7 +21,6 @@ class UserTest extends TestCase
     }
     
     /**
-     * 
      * @test
      */
     public function user_id_value_object_has_employee_id()
@@ -32,7 +30,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * 
      * @test
      */
     public function user_id_value_object_employeeId_is_string()
@@ -49,8 +46,7 @@ class UserTest extends TestCase
     {
         $userIdValueObject = UserIdValueObject::create('fake-uuid', 11554488);
         $user = User::create('Joan', 'email', '123', $userIdValueObject);
-
-        $this->assertEquals($user->userUuid(), 'fake-uuid');
+        $this->assertEquals($user->uuid(), 'fake-uuid');
     }
 
     /**
@@ -60,8 +56,7 @@ class UserTest extends TestCase
     {
         $userIdValueObject = UserIdValueObject::create('fake-uuid', 11554488);
         $user = User::create('Joan', 'email', '123', $userIdValueObject);
-
-        $this->assertEquals($user->userUuid(), 'fake-uuid');
+        $this->assertEquals($user->uuid(), 'fake-uuid');
     }
 
 

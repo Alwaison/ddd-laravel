@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\User;
+namespace Sp\Domain\Model\User;
 
 use Ramsey\Uuid\Uuid;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\User;
+namespace Sp\Domain\Model\User;
 
-use Domain\User\UserIdValueObject;
+use Sp\Domain\Model\User\UserIdValueObject;
 
 final class User
 {

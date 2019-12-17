@@ -1,9 +1,9 @@
 <?php
 
-Namespace Domain\User;
+Namespace Sp\Domain\Model\User;
 
-use Domain\User\User;
-use Domain\User\UserIdValueObjet;
+use Sp\Domain\Model\User\User;
+use Sp\Domain\Model\User\UserIdValueObjet;
 
 interface UserRepository
 {
