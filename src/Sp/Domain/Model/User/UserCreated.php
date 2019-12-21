@@ -7,16 +7,16 @@ use Sp\Domain\Events\DomainEvent;
 class UserCreated implements DomainEvent
 {
 
-    protected $ocurrendOn;
-    protected $userId;
+    private $ocurrendOn;
+    private $userId;
 
-    public function __constructor(UserIdValueObject $userId)
+    public function __construct(UserIdValueObject $aUserId)
     {
-        $this->userId = $userId->uuid();
-        $this->ocurredOn = new DateTime();
+        $this->userId = $aUserId->uuid();
+        $this->ocurredOn = new \DateTimeImmutable();
     }
 
-    public function ocurredOn(): DateTime
+    public function ocurredOn(): \DateTimeImmutable
     {
         return $this->ocurredOn;
     }

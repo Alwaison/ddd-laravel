@@ -68,12 +68,12 @@
             <form action="/login" method=POST>
                 @csrf
                 <p>
-                    <label for=username>User</label>
-                    <input type=text name=username id=username>
+                    <label for=useremail>email</label>
+                    <input type=text name=useremail id=useremail>
                 </p>
                 <p>
                     <label for=password>Password</label>
-                    <input type=password name=passwod id=password>
+                    <input type=password name=password id=password>
                 </p>
                 <p>
                     <button type=submit>Login</button>

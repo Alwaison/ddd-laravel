@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Sp\Application\Service\UserLoginUseCase;
+use Sp\Infrastructure\Persistence\EloquentUserRepository;
 
 class LoginController extends Controller
 {
@@ -45,7 +47,18 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        var_dump($request->toArray());
+        $userEmail = $request->input('useremail');
+        $userPassword = $request->input('password');
+        $userRepository = new EloquentUserRepository();
+
+        $userLoginUseCase = new UserLoginUseCase($userEmail, $userPassword, $userRepository);
+        try {
+            $userResult = $userLoginUseCase->execute();
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+
+        dump($userResult);
         
     }
 }

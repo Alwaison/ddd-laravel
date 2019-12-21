@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Sp\Domain\Model\User\UserCreated;
 use Sp\Domain\Model\User\UserIdValueObject;
 
-class UserRepositoryTest extends TestCase
+class UserCreatedTest extends TestCase
 {
     /**
      * @test
@@ -16,8 +16,7 @@ class UserRepositoryTest extends TestCase
     {
         $uuid = UserIdValueObject::create();
         $event = new UserCreated($uuid);
-        dd($event);
-        //$this->assert('sp_users', ['name' => 'Joan']);
+        $this->assertGreaterThan($event->ocurredOn(), new \DateTimeImmutable());
     }
 
 }

@@ -10,6 +10,7 @@ interface UserRepository
 
     public function create(User $user): void;
     // public function remove(User $user);
+    public function userExists(String $userEmail, String $userPassword): ?User;
     // public function userOfId(UserIdValueObject $userIdValueObject): ?User;
 
 }

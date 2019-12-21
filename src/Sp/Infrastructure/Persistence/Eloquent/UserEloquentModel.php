@@ -1,8 +1,9 @@
 <?php
 
-Namespace Sp\Infrastructure\Persistence\Eloquent;
+namespace Sp\Infrastructure\Persistence\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
+
 
 class UserEloquentModel extends Model
 {
