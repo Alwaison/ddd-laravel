@@ -29,7 +29,7 @@ final class User
         $this->token = null;
         $this->tokenValidUntil = null;
         
-        new UserCreated($this->id);
+        // new UserCreated($this->id);
     }
 
     public function hydratate(

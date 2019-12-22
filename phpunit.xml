@@ -22,6 +22,7 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
     <php>
@@ -32,4 +33,9 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
     </php>
+    <logging>
+        <log type="coverage-html" target="tests/ci/coverage/" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="tests/ci/coverage.xml"/>
+        <log type="junit" target="tests/ci/report.xml"/>
+    </logging>
 </phpunit>
