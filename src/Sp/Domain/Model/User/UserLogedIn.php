@@ -13,6 +13,7 @@ class UserLogedIn implements DomainEvent
     {
         $this->userId = $aUserId->uuid();
         $this->ocurredOn = new \DateTimeImmutable();
+        dump($aUserId, "User id created event!");
     }
 
     public function userId(): string
@@ -23,5 +24,6 @@ class UserLogedIn implements DomainEvent
     public function ocurredOn(): \DateTimeImmutable
     {
         return $this->ocurredOn;
-    }    
+    }
+    
 }

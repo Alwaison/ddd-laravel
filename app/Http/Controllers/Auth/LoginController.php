@@ -49,16 +49,14 @@ class LoginController extends Controller
     {
         $userEmail = $request->input('useremail');
         $userPassword = $request->input('password');
-
         $userLoginUseCase = new UserLoginUseCase($userEmail, $userPassword, $userRepository);
-        
         try {
-            $userResult = $userLoginUseCase->execute();
+            $userLoged = $userLoginUseCase->execute();
         } catch (\Throwable $th) {
             dd($th);
         }
 
-        dump($userResult);
+        dump($userLoged);
         
     }
 }
