@@ -45,20 +45,18 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function login(Request $request)
+    public function login(Request $request, EloquentUserRepository $userRepository)
     {
         $userEmail = $request->input('useremail');
         $userPassword = $request->input('password');
-        $userRepository = new EloquentUserRepository();
-
         $userLoginUseCase = new UserLoginUseCase($userEmail, $userPassword, $userRepository);
         try {
-            $userResult = $userLoginUseCase->execute();
+            $userLoged = $userLoginUseCase->execute();
         } catch (\Throwable $th) {
             dd($th);
         }
 
-        dump($userResult);
+        dump($userLoged);
         
     }
 }

@@ -88,7 +88,7 @@ final class User
         $this->tokenValidUntil = $date;
     }
 
-    protected function id(): UserIdValueObject
+    public function id(): UserIdValueObject
     {
         return $this->id;
     }

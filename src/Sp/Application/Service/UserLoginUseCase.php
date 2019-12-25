@@ -4,6 +4,8 @@ namespace Sp\Application\Service;
 
 use Sp\Domain\Model\User\User;
 use Sp\Domain\Model\User\UserRepository;
+use Sp\Domain\Events\DomainEventPublisher;
+use Sp\Domain\Model\User\UserLogedIn;
 
 class UserLoginUseCase // implements UseCase
 {
@@ -22,7 +24,12 @@ class UserLoginUseCase // implements UseCase
     public function execute(): User
     {
 
-        return $this->userRepository->userExists($this->userEmail, $this->userPassword);
+        $userLoged = $this->userRepository->userExists($this->userEmail, $this->userPassword);
+        DomainEventPublisher::instance()->publish(
+            new UserLogedIn($userLoged->id())
+        );
+
+        return $userLoged;
         
     }
 }
