@@ -4,5 +4,5 @@ namespace Sp\Domain\Events;
 
 interface DomainEvent
 {
-    public function ocurredOn(): \DateTimeImmutable;
+    public function occurredOn(): \DateTimeImmutable;
 }

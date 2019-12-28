@@ -6,7 +6,7 @@ use Sp\Domain\Events\EventRepository;
 
 class PersistDomainEventSubscriber implements DomainEventSubscriber
 {
-    private $eventRepository;
+    private EventRepository $eventRepository;
 
     public function __construct(EventRepository $anEventRepository)
     {

@@ -16,7 +16,7 @@ class UserCreatedTest extends TestCase
     {
         $uuid = UserIdValueObject::create();
         $event = new UserCreated($uuid);
-        $this->assertGreaterThan($event->ocurredOn(), new \DateTimeImmutable());
+        $this->assertGreaterThan($event->occurredOn(), new \DateTimeImmutable());
     }
 
 }

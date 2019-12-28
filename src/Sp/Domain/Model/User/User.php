@@ -7,12 +7,12 @@ use Sp\Domain\Model\User\UserCreated;
 
 final class User
 {
-    protected $id;
-    protected $name;
-    protected $email;
-    protected $password;
-    protected $token;
-    protected $tokenValidUntil;
+    protected UserIdValueObject $id;
+    protected string $name;
+    protected string $email;
+    protected string $password;
+    protected ?string $token;
+    protected ?\DateTimeImmutable $tokenValidUntil;
     private const TOKEN_PASSWORD_BYTES = 16;
 
     public static function create(string $name, string $email, string $password, $userIdValueObject = null): self
@@ -28,7 +28,7 @@ final class User
         $this->setMd5Password($password);
         $this->token = null;
         $this->tokenValidUntil = null;
-        
+
         // new UserCreated($this->id);
     }
 
@@ -39,7 +39,7 @@ final class User
         UserIdValueObject $aUserIdValueObject,
         string $aToken = null,
         \DateTime $aTokenValidUntil = null
-    ): void {        
+    ): void {
         $this->setId($aUserIdValueObject);
         $this->setName($aName);
         $this->setEmail($aEmail);
@@ -73,7 +73,7 @@ final class User
         $this->password = md5($password);
     }
 
-    private function setPassword(string $password): void 
+    private function setPassword(string $password): void
     {
         $this->password = $password;
     }
@@ -83,7 +83,7 @@ final class User
         $this->token = $aToken;
     }
 
-    private function setTokenValidUntil(\DateTime $date = null): void 
+    private function setTokenValidUntil(\DateTime $date = null): void
     {
         $this->tokenValidUntil = $date;
     }
@@ -92,7 +92,7 @@ final class User
     {
         return $this->id;
     }
-    
+
     public function uuid()
     {
         return $this->id->uuid();
@@ -112,7 +112,7 @@ final class User
     {
         return $this->email;
     }
-    
+
     public function password(): string
     {
         return $this->password;

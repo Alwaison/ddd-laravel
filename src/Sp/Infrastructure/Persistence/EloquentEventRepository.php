@@ -17,7 +17,7 @@ class EloquentEventRepository implements EventRepository
         $eventData = [
             'event_body' => $this->strToSave($aDomainEvent),
             'type_name' => get_class($aDomainEvent),
-            'ocurred_on' => $aDomainEvent->ocurredOn()
+            'occurred_on' => $aDomainEvent->occurredOn()
         ];
 
         $model = new EventEloquentModel($eventData);
@@ -42,6 +42,6 @@ class EloquentEventRepository implements EventRepository
 
         return $events;
 
-    } 
+    }
 
 }

@@ -1,0 +1,14 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src\/Sp"
+        ]
+    },
+    "logs": {
+        "text": "tests/ci/infection.log"
+    },
+    "mutators": {
+        "@default": true
+    }
+}
