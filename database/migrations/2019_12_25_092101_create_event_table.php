@@ -17,7 +17,7 @@ class CreateEventTable extends Migration
             $table->bigIncrements('id');
             $table->text('event_body');
             $table->string('type_name', 255);
-            $table->dateTimeTz('ocurred_on');
+            $table->dateTimeTz('occurred_on');
         });
     }
 

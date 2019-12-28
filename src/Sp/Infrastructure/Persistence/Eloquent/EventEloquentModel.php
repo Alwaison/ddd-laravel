@@ -17,7 +17,7 @@ class EventEloquentModel extends Model
      * @var array
      */
     protected $fillable = [
-        'event_body', 'type_name', 'ocurred_on'
+        'event_body', 'type_name', 'occurred_on'
     ];
 
 }
