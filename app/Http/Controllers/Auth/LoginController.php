@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Sp\Application\Service\UserLoginUseCase;
+use Illuminate\Support\Facades\Session;
+use Sp\Application\Service\User\UserLoginUseCase;
 use Sp\Infrastructure\Persistence\EloquentUserRepository;
 
 class LoginController extends Controller
@@ -42,21 +43,25 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        if(Session::get('userLogged') !== null) {
+            return redirect($this->redirectTo);
+        }
         return view('login.index');
     }
 
     public function login(Request $request, EloquentUserRepository $userRepository)
     {
-        $userEmail = $request->input('useremail');
+        $userEmail = $request->input('userEmail');
         $userPassword = $request->input('password');
         $userLoginUseCase = new UserLoginUseCase($userEmail, $userPassword, $userRepository);
         try {
-            $userLoged = $userLoginUseCase->execute();
-        } catch (\Throwable $th) {
-            dd($th);
+            $user = $userLoginUseCase->execute();
+            Session::put([
+                'userLogged' => $user
+            ]);
+            return redirect($this->redirectTo);
+        } catch (\Exception $exception) {
+            return back()->withErrors(['message' => $exception->getMessage()]);
         }
-
-        dump($userLoged);
-        
     }
 }

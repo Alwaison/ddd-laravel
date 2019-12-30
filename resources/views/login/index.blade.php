@@ -65,11 +65,14 @@
     </head>
     <body>
         <div>
+            @if($errors)
+                {{ $errors->first('message') }}
+            @endif
             <form action="/login" method=POST>
                 @csrf
                 <p>
-                    <label for=useremail>email</label>
-                    <input type=text name=useremail id=useremail>
+                    <label for=userEmail>email</label>
+                    <input type=text name=userEmail id=userEmail>
                 </p>
                 <p>
                     <label for=password>Password</label>

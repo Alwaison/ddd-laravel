@@ -1,22 +1,23 @@
 <?php
 
-namespace Sp\Application\Service;
+namespace Sp\Application\Service\User;
 
 use Sp\Domain\Model\User\User;
 use Sp\Domain\Model\User\UserRepository;
 use Sp\Domain\Events\DomainEventPublisher;
 use Sp\Domain\Model\User\UserLoggedIn;
+use Sp\Domain\Service\UseCase;
 
-class UserLoginUseCase // implements UseCase
+class UserLoginUseCase implements UseCase
 {
 
     protected $userEmail;
     protected $userPassword;
     protected $userRepository;
 
-    public function __construct(String $auserEmail, String $aUserPassword, UserRepository $repository)
+    public function __construct(String $aUserEmail, String $aUserPassword, UserRepository $repository)
     {
-        $this->userEmail = $auserEmail;
+        $this->userEmail = $aUserEmail;
         $this->userPassword = $aUserPassword;
         $this->userRepository = $repository;
     }
@@ -24,12 +25,12 @@ class UserLoginUseCase // implements UseCase
     public function execute(): User
     {
 
-        $userLoged = $this->userRepository->userExists($this->userEmail, $this->userPassword);
+        $userLogged = $this->userRepository->userExists($this->userEmail, $this->userPassword);
         DomainEventPublisher::instance()->publish(
-            new UserLoggedIn($userLoged->id())
+            new UserLoggedIn($userLogged->id())
         );
 
-        return $userLoged;
+        return $userLogged;
 
     }
 }

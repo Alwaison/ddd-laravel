@@ -32,7 +32,7 @@ class EloquentUserRepository implements UserRepository
     // public function userOfId(UserIdValueObject $userIdValueObject): ?User {
     //     return null;
     // }
-    
+
     public function userExists(String $userEmail, String $userPassword): ?User
     {
         $userData = [
@@ -42,9 +42,9 @@ class EloquentUserRepository implements UserRepository
         $model = new UserEloquentModel();
         $result = $model->where('email', $userEmail)
                         ->where('password', md5($userPassword))
-                        ->get();        
+                        ->get();
         if (!$result->count()) {
-            throw new UserNotFoundInDatabaseException("User not found in system", 1);
+            throw new UserNotFoundInDatabaseException('User not found in system');
         }
         return $this->createNewInstanceOfUser($result->first());
     }
