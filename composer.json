@@ -16,7 +16,8 @@
         "mll-lab/laravel-graphql-playground": "^2.0",
         "nuwave/lighthouse": "^4.6",
         "php-amqplib/php-amqplib": "^2.11",
-        "ramsey/uuid": "^3.9"
+        "ramsey/uuid": "^3.9",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^10.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

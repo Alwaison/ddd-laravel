@@ -35,10 +35,6 @@ class EloquentUserRepository implements UserRepository
 
     public function userExists(String $userEmail, String $userPassword): ?User
     {
-        $userData = [
-            'email' => $userEmail,
-            'password' => md5($userPassword)
-        ];
         $model = new UserEloquentModel();
         $result = $model->where('email', $userEmail)
                         ->where('password', md5($userPassword))

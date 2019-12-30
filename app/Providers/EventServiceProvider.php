@@ -18,6 +18,14 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'Sp\Domain\Model\User\UserLoggedIn' => [
+            'Sp\Infrastructure\Listeners\CheckIfUserIsValid',
+            'Sp\Infrastructure\Listeners\TraceEventListener'
+        ],
+        'Sp\Domain\Model\User\UserLoggedOut' => [
+            'Sp\Infrastructure\Listeners\TraceEventListener'
+        ],
+
     ];
 
     /**

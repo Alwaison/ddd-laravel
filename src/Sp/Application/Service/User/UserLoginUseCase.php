@@ -26,9 +26,11 @@ class UserLoginUseCase implements UseCase
     {
 
         $userLogged = $this->userRepository->userExists($this->userEmail, $this->userPassword);
-        DomainEventPublisher::instance()->publish(
-            new UserLoggedIn($userLogged->id())
-        );
+        $userLoggedInEvent = new UserLoggedIn($userLogged->id());
+        event($userLoggedInEvent);
+//        DomainEventPublisher::instance()->publish(
+//            userLoggedInEvent
+//        );
 
         return $userLogged;
 
